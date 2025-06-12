@@ -1,30 +1,18 @@
-from herg_datamodule import HERGDataModule
-from tdc import utils
-from tqdm import tqdm
-from gnn_models import SimpleGraphConv, MessagePassingGNN, EnsembleConnectedGNN, Normalizer, OutputNormalizer
-from submit import send_result
-from train import train, validate
-from test_func import test
+from src.herg_datamodule import HERGDataModule
+from src.gnn_models import SimpleGraphConv, MessagePassingGNN, EnsembleConnectedGNN, Normalizer, OutputNormalizer
+from src.submit import send_result
+from src.train import train, validate
+from src.test_func import test
 
 import torch
-
-from tdc import utils
-from tdc.benchmark_group import admet_group
-
-import torch
-import torch.nn.functional as F
-from torch_geometric.nn import GCNConv
-from torch_geometric.nn import Node2Vec
 import torch_geometric
 
-import requests
-import json
 torch.manual_seed(42)  # For reproducibility
 
 # Name for model to be submitted
 model_name = "Simple GNN"
 author = "rhti"
-# Limit torch to 4 treads
+# Limit torch to 4 threads
 torch.set_num_threads(4)
 
 # Hyperparameters

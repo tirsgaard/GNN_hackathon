@@ -1,5 +1,5 @@
 import torch
-from custom_layers import global_var_pool
+from src.custom_layers import global_var_pool
 from torch.utils.data import random_split
 from torch_geometric.datasets import TUDataset
 from torch_geometric.loader import DataLoader
