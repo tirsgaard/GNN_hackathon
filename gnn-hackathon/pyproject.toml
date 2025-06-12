@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "gnn-hackathon"
+version = "0.1.0"
+description = "A package for GNN hackathon"
+authors = ["Your Name <youremail@example.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/yourusername/gnn-hackathon"
+repository = "https://github.com/yourusername/gnn-hackathon"
+keywords = ["gnn", "hackathon", "machine learning"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
