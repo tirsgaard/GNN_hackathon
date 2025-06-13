@@ -5,7 +5,6 @@ from src.train import train, validate
 from src.test_func import test
 
 import torch
-import torch_geometric
 
 torch.manual_seed(42)  # For reproducibility
 
@@ -21,7 +20,7 @@ filter_length = 64
 learning_rate = 0.01
 epochs = 1000
 dropout = 0.4
-submit_test = True
+submit_test = False
 
 # The ADMET group benchmarks
 results = {}
@@ -41,6 +40,7 @@ dataset = HERGDataModule(task_name,
     with_fingerprints = False,
     only_use_atom_number=True,
 )
+dataset.prepare_data()
 dataset.setup()
 train_dataloader = dataset.train_dataloader()
 val_dataloader = dataset.val_dataloader()    
@@ -55,10 +55,7 @@ normalizer = Normalizer(torch.zeros(n_features), torch.ones(n_features))
 normalizer.estimate(dataset.train_dataset)
 model = MessagePassingGNN(n_features, filter_length, n_rounds, normalizer, is_classification=False, dropout=dropout).to(device)
 if device.type == 'cuda':
-    # Enable torch dynamo for CUDA optimization
-    torch._dynamo.config.capture_scalar_outputs = True
-    torch._dynamo.config.capture_dynamic_output_shape_ops = True
-    model = torch_geometric.compile(model, fullgraph=True)
+    model = torch.compile(model, dynamic=True, fullgraph=True)
 target_transform = OutputNormalizer(torch.zeros(1), torch.ones(1), False).to(device)
 target_transform.estimate(dataset.train_dataset)
 

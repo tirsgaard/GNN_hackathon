@@ -3,4 +3,5 @@ pandas
 scikit-learn
 torch
 torch_geometric
-PyTDC
+rdkit
+# PyTDC # Commented out as it really is not needed

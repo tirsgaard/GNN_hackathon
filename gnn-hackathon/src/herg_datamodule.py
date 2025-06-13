@@ -47,7 +47,7 @@ HERG_BENCHMARK_METADATA = {
 
 HERG_URL = "https://dataverse.harvard.edu/api/access/datafile/5740618"
 HERG_ARCHIVE_NAME = "herg_central.tab"
-ADMET_ARCHIVE_MD5 = "e3e4dda2f7f62268448fc813ceefccd5"
+ADMET_ARCHIVE_MD5 = "e3bc4610b80a08e1fcb7f0c5471047a6"
 CSV_COLUMN_MAP = {
     "idx": "ID",
     "smiles": "X",
